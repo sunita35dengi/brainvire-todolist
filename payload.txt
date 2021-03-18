@@ -1,0 +1,106 @@
+Create db in local or otherwise use our db its in server
+
+DROP TABLE IF EXISTS users;
+CREATE TABLE users
+(
+iduser SERIAL,
+first_name character varying(255),
+last_name character varying(255),
+email character varying(255),
+password character varying(45),
+access_token text,
+created_t bigint,
+CONSTRAINT users_pkey PRIMARY KEY (iduser)
+);
+
+
+
+DROP TABLE IF EXISTS task;
+CREATE TABLE task
+(
+idtask SERIAL,
+name character varying(255),
+description text,
+created_t bigint,
+task_over_due_date bigint,
+is_deleted integer DEFAULT 0, 
+is_completed integer DEFAULT 0, 
+iduser integer NOT NULL,
+CONSTRAINT fk_users_fk1 FOREIGN KEY (iduser)
+      REFERENCES users (iduser) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+CONSTRAINT task_pkey PRIMARY KEY (idtask)
+);
+
+
+
+Payload 
+1)  Registration  : http://localhost:3000/user/register - post method
+{
+    email: "savidengi35@gmail.com"
+    firstName: "savi"
+    lastName: "den"
+    password: "Bhoomi35@"
+}
+
+2) login : http://localhost:3000/user/login - post method
+
+{
+    email: "savidengi35@gmail.com"
+    password: "Bhoomi35@"
+}
+
+3) Get task based upon login user and without date selection : http://localhost:3000/task/getTaskByUserId - post method(based upon date, userid)
+
+{
+    date: null
+}
+
+4) Get task based upon user and selected date : http://localhost:3000/task/getTaskByUserId - post method(based upon date, userid)
+
+{
+    date: "03/18/2021"
+}
+
+5) Add task  : http://localhost:3000/task/addTask
+
+{
+    description: "project creation"
+    isChecked: false
+    name: "project "
+    task_over_due_date: "03/19/2021"
+}
+
+6) get task by task id : http://localhost:3000/task/getTaskById?idtask=23  - get method (in query)
+
+{
+    idtask: 23
+}
+
+7) Update task : http://localhost:3000/task/updateTaskByTaskId  : put method
+
+{
+    description: "project creation done"
+    isChecked: false
+    name: "project1"
+    task_id: 22
+    task_over_due_date: "03/19/2021"
+}
+
+8) Delete task : http://localhost:3000/task/deleteTaskByTaskId - put method
+  {
+      task_id: 22
+  }
+
+9) Export excel file :  http://localhost:3000/task/exportExcelTaskList - post method
+
+ "exportDateRangeValue": 
+{
+ 	"start": "2021-03-16", 
+ 	"end": "2021-03-18"
+ 	
+ }
+
+Export file is in taskExcel folder and to see open file.
+
+ 10 ) logout  :  Clearing the localstorage

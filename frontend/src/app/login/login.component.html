@@ -1,0 +1,88 @@
+<div class="container-fluid">
+
+    <div class="login-wraper row">
+        <div class="login-left col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="prelative">
+                <div class="logo d-flex p-3 text-white">
+                    <div><img src="../../assets/images/todo-logo2.png" alt="Todo List"></div>
+                </div>
+                <!--d-none d-sm-block -->
+                <div class="peopleOuterDiv">
+                    <div class="imgPeople">
+                        <img src="assets/images/todo-img.png" alt="Todo List" title="Todo List">
+                    </div>
+                </div>
+
+                <!-- <div>Welcome to</div>
+          <h1 style="color: #fff;">HR SYSTEM</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu vehicula eros.Morbi vulputate convallis laoreet. Curabitur iaculis eros ac scelerisque faucibus. </p> -->
+            </div>
+            <footer class="text-center  mobilenone">
+                <p class="cpoyright">Copyright &copy; <a href="#">Todo List</a>. All Right reserved</p>
+            </footer>
+        </div>
+        <div class="login-right col-lg-6 col-md-6 col-sm-12 col-12">
+
+            <!-- <div class="login-logo mb-3">
+              <img src="images/login_logo.png" alt="" />
+              Sign In
+              <hr />
+          </div> -->
+            <div class="login-box">
+                <div class="showmobile mb-3">
+                    <div>Welcome to</div>
+                    <h1>Todo List</h1>
+                </div>
+                <div class="login-form">
+                    <div class="login-logo mb-3 text-center">
+                    LogIn</div>
+                    <!-- <p class="text-center"><a href="#!" class="active">English</a> | <a href="#!">Arabic</a></p> -->
+                    
+                        <form class="form-with-icon" [formGroup]="loginForm">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Username</mat-label>
+                            <input matInput placeholder="Email" formControlName="email" >
+                            <span class="material-icons">
+                              perm_identity
+                          </span>
+                        </mat-form-field>
+                        <div class="error-msg" *ngIf="loginForm.controls['email'].dirty && loginForm.controls['email'].invalid">
+                            <p class="form_error" *ngIf="loginForm.controls['email'].hasError('required')">
+                                Please Enter UserName/Email
+                            </p>
+                        </div>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Password</mat-label>
+                            <input matInput type="password" formControlName="password" placeholder="Password " required>
+                            <span class="material-icons">
+                              lock
+                          </span>
+                        </mat-form-field>
+                        <div class="error-msg" *ngIf="loginForm.controls['password'].dirty && loginForm.controls['password'].invalid">
+                            <p class="form_error" *ngIf="loginForm.controls['password'].hasError('required')">
+                                Please Enter Password
+                            </p>
+                            <!-- <p class="form_error" *ngIf="loginForm.controls['password'].dirty && loginForm.controls['password'].hasError('pattern')">
+                                Please enter password with atleast 6 letter and one(caps, number, special charactor)</p> -->
+                        </div>
+                        <!-- routerLink="/todo"  -->
+                        <div class="mt-3 text-left">
+                            <button  class="buttonSkewa btna btn-primarya" mat-raised-button color="primary" (click)="login()">Login
+                              <span class="material-icons">arrow_right_alt</span>
+                              </button>
+                        </div>
+
+                    </form>
+                    <div class="signupbox">Don't have an Account!
+                        <a routerLink='/signup'> Sign Up Here</a>
+                    </div>
+                </div>
+            </div>
+            <footer class="text-center d-block d-sm-none d-md-none">
+                <p class="cpoyright">Copyright &copy; <a href="#">Todo List</a>. All Right reserved</p>
+            </footer>
+        </div>
+
+    </div>
+
+</div>

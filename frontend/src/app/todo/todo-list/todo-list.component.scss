@@ -1,0 +1,31 @@
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    display: none;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+}
+::ng-deep .cdk-overlay-container mat-datepicker-content{
+    z-index:99999 !important;
+}
+.modal-dialog {
+    max-width: 537px;
+    margin: 1.75rem auto;
+}
+.cdk-overlay-pane {
+    position: absolute;
+    pointer-events: auto;
+    box-sizing: border-box;
+    z-index: 1000 !important;
+    display: flex;
+    max-width: 100%;
+    max-height: 100%;
+}
+.mat-datepicker-content{
+    z-index: 999999 !important;
+}

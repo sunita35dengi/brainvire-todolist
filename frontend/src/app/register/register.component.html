@@ -1,0 +1,147 @@
+<div class="container-fluid">
+
+    <div class="login-wraper row">
+        <div class="login-left col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="prelative">
+                <div class="logo d-flex p-3 text-white">
+                    <div><img src="../../assets/images/todo-logo2.png" alt="Todo List"></div>
+                </div>
+                <!--d-none d-sm-block -->
+                <div class="peopleOuterDiv">
+                    <div class="imgPeople">
+                        <img src="assets/images/todo-img.png" alt="Todo List" title="Todo List">
+                    </div>
+                </div>
+
+                <!-- <div>Welcome to</div>
+          <h1 style="color: #fff;">HR SYSTEM</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu vehicula eros.Morbi vulputate convallis laoreet. Curabitur iaculis eros ac scelerisque faucibus. </p> -->
+            </div>
+            <footer class="text-center  mobilenone">
+                <p class="cpoyright">Copyright &copy; <a href="#">Todo List</a>. All Right reserved</p>
+            </footer>
+        </div>
+        <div class="login-right col-lg-6 col-md-6 col-sm-12 col-12">
+
+            <!-- <div class="login-logo mb-3">
+              <img src="images/login_logo.png" alt="" />
+              Sign In
+              <hr />
+          </div> -->
+            <div class="login-box">
+                <div class="showmobile mb-3">
+                    <div>Welcome to</div>
+                    <h1>Todo List</h1>
+                </div>
+                <div class="login-form">
+                    <div class="login-logo mb-3 text-center">
+                        Sign In
+                    </div>
+                    <!-- <p class="text-center"><a href="#!" class="active">English</a> | <a href="#!">Arabic</a></p> -->
+                    <form class="form-with-icon" [formGroup]="registrationForm">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <mat-form-field class="full-width">
+                                    <mat-label> First Name</mat-label>
+                                    <input matInput type="text" formControlName="firstName" placeholder="First Name " required>
+                                    <span class="material-icons">perm_identity</span>
+                                </mat-form-field>
+                                <div class="error-msg" *ngIf="registrationForm.controls['firstName'].dirty && registrationForm.controls['firstName'].invalid">
+                                    <p class="form_error" *ngIf="registrationForm.controls['firstName'].hasError('required')">
+                                        Please Enter First Name
+                                    </p>
+                                    <p class="form_error" *ngIf="registrationForm.controls['firstName'].dirty && registrationForm.controls['firstName'].hasError('minlength')">
+                                        Please enter atleast 3 characters</p>
+                                    <p class="form_error" *ngIf="registrationForm.controls['firstName'].dirty && registrationForm.controls['firstName'].hasError('maxlength')">
+                                        Maximum 16 characters are allowed</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <mat-form-field class="full-width">
+                                    <mat-label> Last Name</mat-label>
+                                    <input matInput type="text" formControlName="lastName" placeholder="Last Name " required>
+                                </mat-form-field>
+                                <div class="error-msg" *ngIf="registrationForm.controls['lastName'].dirty && registrationForm.controls['lastName'].invalid">
+                                    <p class="form_error" *ngIf="registrationForm.controls['lastName'].hasError('required')">
+                                        Please Enter Last Name
+                                    </p>
+                                    <p class="form_error" *ngIf="registrationForm.controls['lastName'].dirty && registrationForm.controls['lastName'].hasError('minlength')">
+                                        Please enter atleast 3 characters</p>
+                                    <p class="form_error" *ngIf="registrationForm.controls['lastName'].dirty && registrationForm.controls['lastName'].hasError('maxlength')">
+                                        Maximum 16 characters are allowed</p>
+                                </div>
+                            </div>
+                        </div>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Email</mat-label>
+                            <input matInput type="text" formControlName="email" placeholder="Enter your email">
+                            <span class="material-icons">
+                            mail_outline
+                          </span>
+                        </mat-form-field>
+                        <div class="error-msg" *ngIf="registrationForm.controls['email'].dirty && registrationForm.controls['email'].invalid">
+                            <p class="form_error" *ngIf="registrationForm.controls['email'].hasError('required')">
+                                Please Enter Email
+                            </p>
+                            <p class="form_error" *ngIf="registrationForm.controls['email'].dirty && registrationForm.controls['email'].hasError('pattern')">
+                                Please enter the correct email address</p>
+                        </div>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Password</mat-label>
+                            <input matInput  type="password" formControlName="password" placeholder="Password " required>
+                            <span class="material-icons">
+                              lock
+                          </span>
+                        </mat-form-field>
+                        <div class="error-msg" *ngIf="registrationForm.controls['password'].dirty && registrationForm.controls['password'].invalid">
+                            <p class="form_error" *ngIf="registrationForm.controls['password'].hasError('required')">
+                                Please Enter Password
+                            </p>
+                            <p class="form_error" *ngIf="registrationForm.controls['password'].dirty && registrationForm.controls['password'].hasError('pattern')">
+                                Please enter password with atleast 6 letter and one(caps, number, special charactor)</p>
+                        </div>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Confirm Password</mat-label>
+                            <input matInput type="password" formControlName="confpassword" placeholder="Password " required>
+                            <span class="material-icons">
+                              lock
+                          </span>
+                        </mat-form-field>
+                        <!-- <div class="error-msg" *ngIf="submitted || registrationForm.controls['confpassword'].dirty && registrationForm.controls['confpassword'].invalid || registrationForm.controls['confpassword'].dirty && registrationForm.errors?.mismatch">
+                            <p class="form-error" *ngIf="registrationForm.controls['confpassword'].hasError('required')">
+                                Please Enter Confirm Password
+                            </p>
+                            <p class="form-error" *ngIf="!registrationForm.controls['confpassword'].hasError('required') && (registrationForm.controls['confpassword'].invalid || registrationForm.errors?.mismatch)">
+                                Password doesn't match </p>
+
+                        </div> -->
+                        <div class="error-msg" *ngIf="registrationForm.controls['confpassword'].dirty && registrationForm.controls['confpassword'].invalid && registrationForm.errors?.mismatch">
+                            <p class="form_error" *ngIf="registrationForm.controls['confpassword'].hasError('required')">
+                                Please Enter Confirm Password
+                            </p>
+                            <p class="form_error" *ngIf="registrationForm.controls['confpassword'].dirty && registrationForm.controls['confpassword'].hasError('pattern') && registrationForm.controls['confpassword'].errors || registrationForm.errors?.mismatch">
+                                Password doesn't match </p>
+
+                        </div>
+                        <div class="mt-3 text-left">
+                            <!-- routerLink="/dashboard" -->
+                            <button  class="buttonSkewa btna btn-primarya" mat-raised-button color="primary" (click)="registerUser()">Register
+                              <span class="material-icons">arrow_right_alt</span>
+                              </button>
+                        </div>
+
+                    </form>
+                    <div class="signupbox">Already have account !
+                        <a routerLink='/login'>LogIn Here</a>
+
+                    </div>
+                </div>
+            </div>
+            <footer class="text-center d-block d-sm-none d-md-none">
+                <p class="cpoyright">Copyright &copy; <a href="#">Todo List</a>. All Right reserved</p>
+            </footer>
+        </div>
+
+    </div>
+
+</div>
