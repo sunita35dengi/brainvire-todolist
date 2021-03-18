@@ -8,12 +8,7 @@ import { ApiUrlConstant } from 'src/app/core/constant/api-url.constant';
 export class AppService {
 
   public headersData: any;
-  constructor(private http: HttpClient) {
-
-  let headers = new HttpHeaders();
-  this.headersData = headers.set('Authorization', localStorage.getItem('token'));
-  
-   }
+  constructor(private http: HttpClient) { }
 
   registerUser(data: any): Rx.Observable<any> {
     return this.http.post(ApiUrlConstant.REGISTERUSER, data);
@@ -21,7 +16,7 @@ export class AppService {
 
   getUserById(data: any): Rx.Observable<any> {
     
-    return this.http.post(ApiUrlConstant.GETUSERBYID, data,{ headers: this.headersData });
+    return this.http.post(ApiUrlConstant.GETUSERBYID, data,{ headers: new HttpHeaders().set('Authorization', localStorage.getItem('token'))});
   }
 
   login(data: any): Rx.Observable<any> {
