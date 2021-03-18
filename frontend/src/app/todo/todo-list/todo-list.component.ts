@@ -91,8 +91,9 @@ exportTasks(){
       }
       this.todoService.exportTask({exportDateRangeValue:data}).subscribe((res)=>{
         if (res) {    
-          console.log(res)     
-          saveAs(res.status.filename,res.status.url);
+          console.log(res) 
+          const blob = new Blob([res], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });    
+          saveAs(blob,"mytasks.xlsx");
         }
 
       })

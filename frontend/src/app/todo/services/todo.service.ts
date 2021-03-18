@@ -58,7 +58,7 @@ public userId : any;
     return this.http.put(ApiUrlConstant.EDITTASK, data, { headers: this.headersData});
   }
   exportTask(data:any):Rx.Observable<any> {
-    return this.http.post(ApiUrlConstant.EXPORTTASK, data,{ headers: this.headersData});
+    return this.http.post(ApiUrlConstant.EXPORTTASK, data,{ headers: this.headersData, responseType: "blob" });
   }
 
   dateRangeOptions = () => {
