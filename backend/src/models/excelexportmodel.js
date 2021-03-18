@@ -13,7 +13,7 @@ var exportExcelTaskList = async function (req, res) {
     try {
         let body = req.body;
         const exportDateRangeValue = body.exportDateRangeValue;
-
+        let iduser = req.iduser;
         let satrtdateConv =  moment(exportDateRangeValue.start,'MM/DD/YYYY').format('YYYY-MM-DD');
         
         let enddateConv =  moment(exportDateRangeValue.end, 'MM/DD/YYYY').format('YYYY-MM-DD');
@@ -30,7 +30,7 @@ var exportExcelTaskList = async function (req, res) {
             status: ''
         }
 
-        var dir = '.taskExcel/';
+        var dir = 'taskExcel/';
 
         if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir);
@@ -43,7 +43,7 @@ var exportExcelTaskList = async function (req, res) {
             useStyles: true
         };
 
-        let taskListQry = `SELECT * FROM users as U JOIN task AS T ON T.iduser = U.iduser WHERE T.is_deleted = 0  AND (T.task_over_due_date>= ${start_timestamp} AND T.task_over_due_date <= ${end_timestamp}  )`;
+        let taskListQry = `SELECT * FROM users as U JOIN task AS T ON T.iduser = U.iduser WHERE T.is_deleted = 0 AND T.iduser=${iduser}  AND (T.task_over_due_date>= ${start_timestamp} AND T.task_over_due_date <= ${end_timestamp}  )`;
         let taskList = await dbfun.selectAny(taskListQry);
 
         let excelColumn = [];
@@ -89,12 +89,17 @@ var exportExcelTaskList = async function (req, res) {
                         ws.addRow(rowData);
                     }
                     await wb.commit();
-                    let filePath = path.join(__dirname, '../../taskExcel/') + filename;
+                    let filePath = path.resolve(__dirname, '../../taskExcel/') +'/'+ filename;
+                    console.log(filePath, "filePath");
+                    return {file:filePath, name:filename};
 
 
-                    responseSend.status = { url:
-                        filePath, filename : filename} ;
-                    return responseSend;
+                    // let filePath = path.join(__dirname, '../../taskExcel/') + filename;
+
+                   
+                    // responseSend.status = { url:
+                    //     filePath, filename : filename} ;
+                    // return responseSend;
                    
         }
 

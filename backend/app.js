@@ -11,7 +11,7 @@
 app.use(express.json());
  app.use(cors());
 
- app.use('/data', express.static(__dirname + '/uploads'));
+//  app.use('/data', express.static(__dirname + '/uploads'));
  /** Listen on the port 3000 for connections */
  app.listen(port, () => {
      console.log('App listening on the port', + port);

@@ -47,7 +47,8 @@ exports.addTask = async (req ,res) => {
     exports.exportExcelTaskList = async (req ,res) => {
       try{
         let result = await exportexcelmodel.exportExcelTaskList(req);
-        return res.json(result);
+        console.log(result, "result")
+        return res.download(result.file, result.name);
       }
       catch(e){
         return res.json(e.message);
